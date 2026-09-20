@@ -1,0 +1,28 @@
+-- select max(w.temperature_max),c.name from cities c 
+-- inner join weather w on w.city_id=c.id
+-- group by c.name,w.temperature_max
+-- order by w.temperature_max desc
+
+-- select c.name,max(w.precipitation) from cities c 
+-- inner join weather w on w.city_id=c.id
+-- group by c.name
+-- order by max(w.precipitation) desc
+
+-- SELECT c.name,AVG(w.risk_score) AS risque_moyen FROM cities c
+-- INNER JOIN weather w ON w.city_id = c.id
+-- GROUP BY c.name
+-- ORDER BY risque_moyen DESC;
+
+
+
+-- select c.name,w.date,risk_score from cities c 
+-- inner join weather w on w.city_id=c.id 
+-- order by risk_score desc
+-- limit 1
+
+
+
+SELECT DISTINCT ON (c.name)
+c.name,w.date,w.risk_score FROM cities c
+INNER JOIN weather w ON w.city_id = c.id
+ORDER BY c.name, w.risk_score DESC;
